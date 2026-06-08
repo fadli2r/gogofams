@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+:root {
+  --background: #090d16; /* Deep dark slate-black */
+  --foreground: #f8fafc; /* Clear Slate 50 */
+  --primary: #8b5cf6; /* Indigo/Violet 500 */
+  --primary-hover: #7c3aed; /* Violet 600 */
+  --primary-foreground: #ffffff;
+  --secondary: #162035; /* Dark slate 800 */
+  --secondary-foreground: #94a3b8; /* Slate 400 */
+  --accent: #4f46e5; /* Purple-indigo */
+  --accent-foreground: #ffffff;
+  --muted: #1e293b; /* Slate 800 */
+  --muted-foreground: #64748b; /* Slate 500 */
+  --border: #1e293b; /* Slate 800 */
+  --card: #0e1726; /* Deep dark slate card */
+  --card-foreground: #f1f5f9;
+  --success: #10b981; /* Emerald 500 */
+  --success-bg: rgba(16, 185, 129, 0.1);
+  --warning: #f59e0b; /* Amber 500 */
+  --warning-bg: rgba(245, 158, 11, 0.15);
+  --destructive: #ef4444; /* Red 500 */
+  --destructive-bg: rgba(239, 68, 68, 0.15);
+  --radius: 12px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-destructive: var(--destructive);
+  --color-destructive-bg: var(--destructive-bg);
+  
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), sans-serif;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar for premium look */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Glassmorphism details */
+.glass {
+  background: rgba(14, 23, 38, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(14, 23, 38, 0.8) 0%, rgba(22, 32, 53, 0.4) 100%);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}

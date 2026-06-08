@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model MasterAccount {
+  id             String        @id @default(cuid())
+  accountName    String
+  categoryId     String?
+  category       Category?     @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  registeredDate DateTime
+  expiredDate    DateTime
+  lastPassword   String
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  transactions   Transaction[]
+}
+
+model Category {
+  id             String          @id @default(cuid())
+  name           String          @unique
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  masterAccounts MasterAccount[]
+}
+
+model Transaction {
+  id            String        @id @default(cuid())
+  accountId     String
+  masterAccount MasterAccount @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  customerName  String
+  customerEmail String?
+  orderNumber   String
+  startDate     DateTime
+  duration      Int
+  expiredDate   DateTime
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
