@@ -11,7 +11,7 @@ export default async function TransactionsPage() {
 
   const transactions = txRes.success ? txRes.data : [];
   const masterAccounts = accRes.success 
-    ? accRes.data.map(acc => ({ id: acc.id, accountName: acc.accountName }))
+    ? accRes.data.map((acc: { id: string; accountName: string }) => ({ id: acc.id, accountName: acc.accountName }))
     : [];
 
   return (
