@@ -1,14 +1,11 @@
 const { PrismaClient } = require('@prisma/client');
-const { PrismaBetterSqlite3 } = require('@prisma/adapter-better-sqlite3');
-const path = require('path');
+const { PrismaPg } = require('@prisma/adapter-pg');
+const pg = require('pg');
 
 async function main() {
-  const dbPath = path.resolve(__dirname, '../dev.db');
-  
   console.log('Initializing database connection...');
-  const adapter = new PrismaBetterSqlite3({
-    url: `file:${dbPath}`
-  });
+  const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
+  const adapter = new PrismaPg(pool);
   const prisma = new PrismaClient({ adapter });
 
   console.log('Clearing database...');
