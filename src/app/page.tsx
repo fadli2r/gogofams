@@ -3,6 +3,28 @@ import { getDashboardData } from "@/lib/actions";
 export const dynamic = "force-dynamic";
 import { Users, KeyRound, AlertCircle, CalendarClock, ShieldAlert, BadgeAlert } from "lucide-react";
 
+interface DashboardTransaction {
+  id: string;
+  accountId: string;
+  accountName: string;
+  categoryName: string | null;
+  customerName: string;
+  customerEmail: string | null;
+  orderNumber: string;
+  startDate: string;
+  duration: number;
+  expiredDate: string;
+}
+
+interface DashboardAccount {
+  id: string;
+  accountName: string;
+  categoryName: string | null;
+  registeredDate: string;
+  expiredDate: string;
+  lastPassword: string;
+}
+
 export default async function DashboardPage() {
   const result = await getDashboardData();
   
@@ -15,7 +37,8 @@ export default async function DashboardPage() {
     );
   }
 
-  const { transactions, accounts } = result;
+  const transactions = result.transactions as DashboardTransaction[];
+  const accounts = result.accounts as DashboardAccount[];
 
   const formatDate = (dateStr: string) => {
     return new Date(dateStr).toLocaleDateString("id-ID", {
